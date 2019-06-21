@@ -27,5 +27,22 @@ export class ProductsService {
            .http
            .get(`${this.uri}`);
   }
-  
+
+  editProduct(id) {
+    return this
+            .http
+            .get(`${this.uri}/edit/${id}`);
+    }
+
+  updateProduct(ProductName, ProductDescription, ProductPrice, id) {
+      const obj = {
+        ProductName,
+        ProductDescription,
+        ProductPrice
+      };
+      this
+        .http
+        .post(`${this.uri}/update/${id}`, obj)
+        .subscribe(res => console.log('Done'));
+  }
 }
